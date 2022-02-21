@@ -10,10 +10,17 @@ public class TcpHealthCheckService : BackgroundService
     private readonly TcpListener _listener;
     private readonly HealthCheckService _healthCheckService;
     private readonly Func<HealthCheckRegistration, bool> _healthCheckPredicate;
+    private readonly TimeSpan _heartbeatInterval;
 
-    public TcpHealthCheckService(IPAddress address, int port, HealthCheckService healthCheckService, Func<HealthCheckRegistration, bool> healthCheckPredicate)
+    public TcpHealthCheckService(TcpHealthCheckOptions options, HealthCheckService healthCheckService, Func<HealthCheckRegistration, bool> healthCheckPredicate)
     {
-        _listener = new TcpListener(address, port);
+        if (options.Port is <= 0 or > 65535)
+        {
+            throw new ArgumentOutOfRangeException(nameof(options.Port), $"Port must be between 0 and 65535. Was: {options.Port}");
+        }
+        
+        _listener = new TcpListener(options.IpAddress, options.Port);
+        _heartbeatInterval = options.HeartbeatInterval;
         _healthCheckService = healthCheckService;
         _healthCheckPredicate = healthCheckPredicate;
     }
@@ -25,7 +32,7 @@ public class TcpHealthCheckService : BackgroundService
         while (!stoppingToken.IsCancellationRequested)
         {
             await UpdateHeartbeatAsync(stoppingToken);
-            Thread.Sleep(TimeSpan.FromSeconds(1));
+            Thread.Sleep(_heartbeatInterval);
             if (_listener.Pending())
             {
                 _listener.Stop();

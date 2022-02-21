@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpHealthChecks", "TcpHealthChecks\TcpHealthChecks.csproj", "{1EA77E96-0046-4083-88CE-F4B925477028}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleWorker", "ExampleWorker\ExampleWorker.csproj", "{DE202836-54A5-48DE-AF45-050554B9DC88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EA77E96-0046-4083-88CE-F4B925477028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EA77E96-0046-4083-88CE-F4B925477028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EA77E96-0046-4083-88CE-F4B925477028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA77E96-0046-4083-88CE-F4B925477028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE202836-54A5-48DE-AF45-050554B9DC88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE202836-54A5-48DE-AF45-050554B9DC88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE202836-54A5-48DE-AF45-050554B9DC88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE202836-54A5-48DE-AF45-050554B9DC88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
